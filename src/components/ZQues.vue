@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'z-card-0001',
+  name: 'ZQues',
   props: {
     'surveyInfo': {
       type: Object,
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../style/zzj.less';
+@import './style/zzj.less';
 
 @title-color: @gray-8;
 @subtitle-color: @gray-6;
