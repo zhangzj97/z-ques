@@ -1,5 +1,5 @@
 <template>
-  <div class="z-card--0001">
+  <div class="z-card--0001" ref="zcard0001" @click="test1($event)">
     <div class="card">
       <div class="background">
         <transition name="background-img">
@@ -26,6 +26,18 @@
         <transition name="title-drop">
           <div class="subtitle" v-if="show">{{ surveyInfo.subtitle }}</div>
         </transition>
+        <button @click="test1()">Test1</button>
+
+        <transition
+          v-on:before-enter="beforeEnter"
+          v-on:enter="enter"
+          v-on:leave="leave"
+        >
+          <p v-if="show">
+            Demo
+          </p>
+        </transition>
+
       </div>
     </div>
     <div class="flag"></div>
@@ -33,8 +45,9 @@
 </template>
 
 <script>
+import Velocity from 'velocity-animate'
 export default {
-  name: 'z-card-0001',
+  name: 'z-card--0001',
   props: {
     'surveyInfo': {
       type: Object,
@@ -62,7 +75,15 @@ export default {
       show: 0
     }
   },
-  method: {
+  methods: {
+    test1: function (a) {
+      console.log(this.$refs.zcard0001, arguments, Velocity)
+      Velocity(this.$refs.zcard0001, {
+        opacity: 0.1
+      }, {
+        duration: 600
+      })
+    },
 
   },
   computed: {
