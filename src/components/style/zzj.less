@@ -1,6 +1,40 @@
 @import 'var.less';
 
-//color
+// some function
+// main for mobile
+// main width is 100%
+.mian-css(){
+  width: 100%;
+}
+// bgc Test
+.bgc(@c){
+  background-color: @c;
+}
+// Card style
+.card(){
+  border-radius: 8px;
+  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, .05), 0 2px 2px 0 rgba(0, 0, 0, .1), 0 3px 3px 0 rgba(0, 0, 0, .05)
+}
+// Quick center
+.flex-center(){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// font style
+@title-color: @cyan-9;
+@subtitle-color: @cyan-8;
+@desc-color: @gray-7;
+
+// test
+@t1: @cyan-9;
+@t2: @cyan-8;
+@t3: @cyan-7;
+@t4: @cyan-6;
+@t5: @cyan-5;
+
+// color
 @cyan-0: #e0f7fa;
 @cyan-1: #b2ebf2;
 @cyan-2: #80deea;

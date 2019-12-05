@@ -1,12 +1,31 @@
 <template>
   <div class="z-card--0001">
-    <div class="backgroud">
+    <div class="card">
+      <div class="background">
+        <transition name="background-img">
+          <img
+            :src=surveyInfo.avatar
+            :alt=surveyInfo.title
+            v-if="show"
+          />
+        </transition>
+      </div>
       <div class="thumb">
-        <img :src=surveyInfo.avatar :alt=surveyInfo.title />
+        <transition name="thumb-img">
+          <img
+            :src=surveyInfo.avatar
+            :alt=surveyInfo.title
+            v-if="show"
+          />
+        </transition>
       </div>
       <div class="header">
-        <div class="title">{{ surveyInfo.title }}</div>
-        <div class="subtitle">{{ surveyInfo.subtitle }}</div>
+        <transition name="title-drop">
+          <div class="title" v-if="show">{{ surveyInfo.title }}</div>
+        </transition>
+        <transition name="title-drop">
+          <div class="subtitle" v-if="show">{{ surveyInfo.subtitle }}</div>
+        </transition>
       </div>
     </div>
     <div class="flag"></div>
@@ -40,7 +59,21 @@ export default {
   },
   data () {
     return {
+      show: 0
     }
+  },
+  method: {
+
+  },
+  computed: {
+    backgroundImage: function () {
+      return {
+        background: 'linear-gradient(to right, rgba(255,255,255,.9) 100px, rgba(255,255,255,.5)), url(' + this.surveyInfo.avatar + ') no-repeat'
+      }
+    }
+  },
+  mounted () {
+    this.show = !this.show
   }
 }
 </script>
@@ -48,53 +81,64 @@ export default {
 <style lang="less">
 @import '../../style/zzj.less';
 
-@title-color: @gray-8;
-@subtitle-color: @gray-6;
-@desc-color: @gray-7;
-
-@t1: @cyan-9;
-@t2: @cyan-8;
-@t3: @cyan-7;
-@t4: @cyan-6;
-@t5: @cyan-5;
-
-.bgc(@c){
-  background-color: @c;
-}
-.card(){
-  border-radius: 8px;
-  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, .05), 0 2px 2px 0 rgba(0, 0, 0, .1), 0 3px 3px 0 rgba(0, 0, 0, .05)
-}
-.flex-center(){
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .z-card--0001{
-  width: 100%;
+  // [IMPORTANT] Why row-reverse?
+  // [IMPORTANT] Card's width is 80%. If to be row, the 20% will be wrong.
   display: flex;
   flex-flow: row-reverse nowrap;
+  .mian-css();
 
-  .backgroud{
+  // Card contain the Title Text, Thumb-Img, Backgroud-Img.
+  .card{
+    // [IMPORTANT] Why is 80% but not 100%?
+    // [IMPORTANT] Avatar Img put OUTSIDE but not contained by card in sign.
     width: 80%;
+    // Make Title NOT TOO CLOSE to Card border
     padding: 8px 8px 8px 0;
     // flex
     display: flex;
-    flex-flow: row nowarp;
+    flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
-
-    border-radius: 15px;
+    // [IMPORTANT] Make BACKGROUD-IMG to be absolute.
+    position: relative;
+    // add Card style.
     .card();
-    .bgc(@t2);
+
+    .background{
+      // [IMPORTANT] img instead of backgroud-image
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      // Card border-radius
+      border-radius: 8px;
+      // Backgroud Img
+      z-index: -1;
+      overflow: hidden;
+
+      img{
+        // Backgroud image postion, size, and filter
+        width: 400%;
+        position: absolute;
+        top: -100px;
+        right: -200px;
+        filter: blur(2px);
+        // [IMPORTANT] Vue animation opacity has some wrong.
+        opacity: .6;
+      }
+    }
 
     .thumb{
+      // [IMPORTANT] Thumb is a div outside card.
       margin-right: -50px;
       position: relative;
       left: -50px;
       width: 88px;
       height: 88px;
+      overflow: hidden;
       .flex-center();
 
       img{
@@ -102,6 +146,7 @@ export default {
         height: 80%;
       }
     }
+
     .header{
       width: 200px;
       min-height: 88px;
@@ -123,8 +168,52 @@ export default {
     width: 15px;
     position: relative;
     top: 0;
-    right: 0;
   }
-
 }
+
+.thumb-img{
+  &-enter, &-leave-to{
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  &-enter-active, &-leave-active{
+    transition: all .8s ease-in-out;
+  }
+  &-enter-to, &-leave{
+    opacity: 1;
+  }
+}
+.background-img{
+  &-enter{
+    opacity: 0;
+    transform: translate(500px, 100px);
+  }
+  &-leave-to{
+    opacity: 0;
+    transform: translate(900px);
+  }
+  &-enter-active, &-leave-active{
+    transition: all  .8s ease-in-out;
+  }
+  &-enter-to, &-leave{
+    opacity: .6;
+  }
+}
+.title-drop{
+  &-enter{
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  &-leave-to{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  &-enter-active, &-leave-active{
+    transition: all  .8s ease-in-out;
+  }
+  &-enter-to, &-leave{
+    opacity: 1;
+  }
+}
+
 </style>
