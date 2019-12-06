@@ -1,46 +1,36 @@
 <template>
-  <div class="z-card--0001" ref="zcard0001" @click="test1($event)">
-    <div class="card">
-      <div class="background">
+  <div class="z-card--0001" ref="zcard0001">
+    <div class="card" ref="card">
+      <div class="background" ref="background">
         <transition name="background-img">
-          <img
+          <img ref="backgroundimg"
             :src=surveyInfo.avatar
             :alt=surveyInfo.title
             v-if="show"
           />
         </transition>
       </div>
-      <div class="thumb">
+      <div class="thumb" ref="thumb">
         <transition name="thumb-img">
-          <img
+          <img ref="thumbimg"
             :src=surveyInfo.avatar
             :alt=surveyInfo.title
             v-if="show"
           />
         </transition>
       </div>
-      <div class="header">
+      <div class="header" ref="header">
         <transition name="title-drop">
-          <div class="title" v-if="show">{{ surveyInfo.title }}</div>
+          <div class="title" v-if="show" ref="title">{{ surveyInfo.title }}</div>
         </transition>
         <transition name="title-drop">
-          <div class="subtitle" v-if="show">{{ surveyInfo.subtitle }}</div>
+          <div class="subtitle" v-if="show" ref="subtitle">{{ surveyInfo.subtitle }}</div>
         </transition>
-        <button @click="test1()">Test1</button>
-
-        <transition
-          v-on:before-enter="beforeEnter"
-          v-on:enter="enter"
-          v-on:leave="leave"
-        >
-          <p v-if="show">
-            Demo
-          </p>
-        </transition>
-
+        <button @click="checkDetail()">checkDetail</button>
+        <button @click="checkList()">checkList</button>
       </div>
     </div>
-    <div class="flag"></div>
+    <div class="flag" ref="flag"></div>
   </div>
 </template>
 
@@ -76,15 +66,137 @@ export default {
     }
   },
   methods: {
-    test1: function (a) {
-      console.log(this.$refs.zcard0001, arguments, Velocity)
+    checkDetail: function () {
+      let velocityOpt0 = {duration: 0}
+      let velocityOpt4 = {duration: 400}
+      // let velocityOpt8 = {duration: 800}
+
+      // Animation
+      // 1. zcard0001
+      // 2. card
+      // 3. thumb
+      // 4. title
+
+      // 1. zcard0001
       Velocity(this.$refs.zcard0001, {
-        opacity: 0.1
+        justifyContent: 'center'
+      }, velocityOpt4)
+
+      // 2.card
+      Velocity(this.$refs.card, {
+        flexFlow: 'column nowrap',
+        width: '100%'
+      }, velocityOpt4)
+      // [IMPORTANT] CARD'width is calc(100%), 100% -> 0% -> 80%, but not 100% -> 80%
+      Velocity(this.$refs.card, {
+        paddingRight: 0,
+        width: '100%'
+      }, velocityOpt0)
+      Velocity(this.$refs.card, {
+        marginTop: 100,
+        width: '80%'
+      }, velocityOpt4)
+
+      // 3.thumb
+      Velocity(this.$refs.thumb, {
+        width: 0,
+        height: 0,
+        // Go right
+        left: 100,
+        opacity: 0
+      }, velocityOpt4)
+      // Ready
+      Velocity(this.$refs.thumb, {
+        // Center
+        marginRight: 0,
+        left: 0
+      }, velocityOpt0)
+      Velocity(this.$refs.thumb, {
+        width: '270px',
+        height: '270px',
+        top: -130,
+        marginBottom: -130,
+        // [IMPORTANT] If marginRight is 0, there will not be marginRight is style
+        marginRight: 0.1,
+        opacity: 1
+      }, velocityOpt4)
+
+      // 4. title
+      Velocity(this.$refs.title, {
+        fontSize: 30,
+        marginBottom: 10
       }, {
-        duration: 600
+        duration: 400
+      })
+      Velocity(this.$refs.title, {
+        fontSize: 24
+      }, {
+        duration: 400
       })
     },
+    checkList: function () {
+      let velocityOpt0 = {duration: 0}
+      let velocityOpt4 = {duration: 400}
+      // let velocityOpt8 = {duration: 800}
 
+      // Animation
+      // 1. zcard0001
+      // 2. card
+      // 3. thumb
+      // 4. title
+
+      // 1. zcard0001
+      Velocity(this.$refs.zcard0001, {
+        justifyContent: 'flex-start'
+      }, velocityOpt4)
+
+      // 2.card
+      Velocity(this.$refs.card, {
+        marginTop: 0,
+        flexFlow: 'row nowrap',
+        width: '100%',
+        paddingRight: 8
+      }, velocityOpt4)
+      // [IMPORTANT] CARD'width is calc(100%), 100% -> 0% -> 80%, but not 100% -> 80%
+      // When reserve we can ignore.
+      // Velocity(this.$refs.card, {
+      //   width: '100%'
+      // }, velocityOpt0)
+      Velocity(this.$refs.card, {
+        width: '80%'
+      }, velocityOpt4)
+
+      // 3.thumb
+      Velocity(this.$refs.thumb, {
+        width: 0,
+        height: 0,
+        // Go Bottom
+        top: 0,
+        marginBottom: 0,
+        opacity: 0
+      }, velocityOpt4)
+      // Ready
+      Velocity(this.$refs.thumb, {
+        marginBottom: 0,
+        marginRight: 0,
+        left: 100
+      }, velocityOpt0)
+      Velocity(this.$refs.thumb, {
+        width: '100px',
+        height: '100px',
+        left: -66,
+        marginRight: -80,
+        opacity: 1
+      }, velocityOpt4)
+
+      // 4. title
+      Velocity(this.$refs.title, {
+        fontSize: 18,
+        marginBottom: 0
+      }, {
+        duration: 800
+      })
+    }
   },
   computed: {
     backgroundImage: function () {
@@ -100,141 +212,5 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../style/zzj.less';
-
-.z-card--0001{
-  // [IMPORTANT] Why row-reverse?
-  // [IMPORTANT] Card's width is 80%. If to be row, the 20% will be wrong.
-  display: flex;
-  flex-flow: row-reverse nowrap;
-  .mian-css();
-
-  // Card contain the Title Text, Thumb-Img, Backgroud-Img.
-  .card{
-    // [IMPORTANT] Why is 80% but not 100%?
-    // [IMPORTANT] Avatar Img put OUTSIDE but not contained by card in sign.
-    width: 80%;
-    // Make Title NOT TOO CLOSE to Card border
-    padding: 8px 8px 8px 0;
-    // flex
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
-    // [IMPORTANT] Make BACKGROUD-IMG to be absolute.
-    position: relative;
-    // add Card style.
-    .card();
-
-    .background{
-      // [IMPORTANT] img instead of backgroud-image
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      // Card border-radius
-      border-radius: 8px;
-      // Backgroud Img
-      z-index: -1;
-      overflow: hidden;
-
-      img{
-        // Backgroud image postion, size, and filter
-        width: 400%;
-        position: absolute;
-        top: -100px;
-        right: -200px;
-        filter: blur(2px);
-        // [IMPORTANT] Vue animation opacity has some wrong.
-        opacity: .6;
-      }
-    }
-
-    .thumb{
-      // [IMPORTANT] Thumb is a div outside card.
-      margin-right: -50px;
-      position: relative;
-      left: -50px;
-      width: 88px;
-      height: 88px;
-      overflow: hidden;
-      .flex-center();
-
-      img{
-        width: 80%;
-        height: 80%;
-      }
-    }
-
-    .header{
-      width: 200px;
-      min-height: 88px;
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-around;
-
-      .title{
-        color: @title-color;
-        font-size: @font-size-lg;
-      }
-      .subtitle{
-        color: @subtitle-color;
-        font-size: @font-size-md;
-      }
-    }
-  }
-  .flag{
-    width: 15px;
-    position: relative;
-    top: 0;
-  }
-}
-
-.thumb-img{
-  &-enter, &-leave-to{
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  &-enter-active, &-leave-active{
-    transition: all .8s ease-in-out;
-  }
-  &-enter-to, &-leave{
-    opacity: 1;
-  }
-}
-.background-img{
-  &-enter{
-    opacity: 0;
-    transform: translate(500px, 100px);
-  }
-  &-leave-to{
-    opacity: 0;
-    transform: translate(900px);
-  }
-  &-enter-active, &-leave-active{
-    transition: all  .8s ease-in-out;
-  }
-  &-enter-to, &-leave{
-    opacity: .6;
-  }
-}
-.title-drop{
-  &-enter{
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  &-leave-to{
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  &-enter-active, &-leave-active{
-    transition: all  .8s ease-in-out;
-  }
-  &-enter-to, &-leave{
-    opacity: 1;
-  }
-}
-
+@import 'index.less';
 </style>
