@@ -1,5 +1,7 @@
 <template>
-  <div class="z-card--0001" ref="zcard0001">
+  <div class="z-card--0001"
+    ref="zcard0001"
+  >
     <div class="card" ref="card">
       <div class="background" ref="background">
         <transition name="background-img">
@@ -26,8 +28,8 @@
         <transition name="title-drop">
           <div class="subtitle" v-if="show" ref="subtitle">{{ surveyInfo.subtitle }}</div>
         </transition>
-        <button @click="checkDetail()">checkDetail</button>
-        <button @click="checkList()">checkList</button>
+        <button style="display: none" @click="checkDetail()">checkDetail</button>
+        <button style="display: none" @click="checkList()">checkList</button>
       </div>
     </div>
     <div class="flag" ref="flag"></div>
@@ -38,6 +40,9 @@
 import Velocity from 'velocity-animate'
 export default {
   name: 'z-card--0001',
+  // model: {
+
+  // },
   props: {
     'surveyInfo': {
       type: Object,
