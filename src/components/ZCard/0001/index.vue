@@ -40,9 +40,6 @@
 import Velocity from 'velocity-animate'
 export default {
   name: 'z-card--0001',
-  // model: {
-
-  // },
   props: {
     'surveyInfo': {
       type: Object,

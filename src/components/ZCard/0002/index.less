@@ -1,0 +1,80 @@
+@import '../../style/zzj.less';
+
+.z-card--0002{
+  display: flex;
+  flex-flow: row nowrap;
+  // Make a horizontal rule
+  border-bottom: 1px solid @gray-1;
+  .mian-css();
+
+  .card{
+    width: 100%;
+    padding: 8px 8px 8px 8px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    // [IMPORTANT] Make BACKGROUD-IMG to be absolute.
+    position: relative;
+
+    .backgroud{
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 8px;
+      z-index: -1;
+      overflow: hidden;
+
+      img{
+        opacity: .6;
+      }
+    }
+
+    .thumb{
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
+      overflow: hidden;
+      .flex-center();
+      .circle();
+
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .box{
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+      margin-left: 20px;
+      .text-left();
+
+      .nickname{
+        color: @title-color;
+        font-size: @font-size-lg;
+      }
+
+      .text{
+        padding: 8px;
+        margin-bottom: 8px;
+        color: @title-color;
+        font-size: @font-size-md;
+        .card();
+      }
+      
+      .footer{
+        color: @subtitle-color;
+        font-size: @font-size-md;
+
+        .time{
+         color: @gray-6;
+        }
+      }
+    }
+  }
+}
