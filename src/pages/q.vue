@@ -30,7 +30,7 @@ export default {
           id: 2,
           title: '毛概选题库',
           subtitle: '高亮关键词语，引导选项，快速过完题库。',
-          avatar: '/static/T毛概.png'
+          avatar: '/static/毛概.png'
         }, {
           id: 3,
           title: '马原',
@@ -40,7 +40,27 @@ export default {
           id: 4,
           title: '史纲史纲史纲史纲史纲史纲史纲',
           subtitle: '高亮关思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库键词语，引导选项，快速过完题库。',
-          avatar: '/static/T史纲.png'
+          avatar: '/static/史纲.png'
+        }, {
+          id: 11,
+          title: '思修题库',
+          subtitle: '原版题库',
+          avatar: '/static/T思修.png'
+        }, {
+          id: 22,
+          title: '毛概选题库',
+          subtitle: '高亮关键词语，引导选项，快速过完题库。',
+          avatar: '/static/毛概.png'
+        }, {
+          id: 33,
+          title: '马原',
+          subtitle: '高亮关思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库键词语，引导选项，快速过完题库。',
+          avatar: '/static/T马原.png'
+        }, {
+          id: 44,
+          title: '史纲史纲史纲史纲史纲史纲史纲',
+          subtitle: '高亮关思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库键词语，引导选项，快速过完题库。',
+          avatar: '/static/史纲.png'
         }
       ],
       showSurveyInfoId: 0,
