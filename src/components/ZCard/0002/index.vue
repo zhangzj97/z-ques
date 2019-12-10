@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Animate from 'animate.css'
+import 'animate.css'
 
 export default {
   name: 'z-card--0002',
@@ -53,9 +53,6 @@ export default {
     return {
       show: 1
     }
-  },
-  component: {
-    Animate
   }
 }
 </script>

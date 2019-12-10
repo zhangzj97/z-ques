@@ -12,6 +12,16 @@
         @click.native="showSurveyInfo(v1.id, i1)"
       ></z-card-0001>
     </div>
+    <div class="chapter-wrap">
+      <z-card-0003
+        ref="surveyCard0003"
+        v-show="showSurveyInfoId !== 0"
+        v-for="(v1) of chapterList"
+        :key=v1.id
+        :info=v1
+      >
+      </z-card-0003>
+    </div>
     <div class="comment-wrap">
       <z-card-0002
         ref="surveyCard0002"
@@ -27,6 +37,7 @@
 <script>
 import ZCard0001 from '@/components/ZCard/0001/index'
 import ZCard0002 from '@/components/ZCard/0002/index'
+import ZCard0003 from '@/components/ZCard/0003/index'
 
 export default {
   data () {
@@ -75,13 +86,15 @@ export default {
         }
       ],
       commentList: [],
+      chapterList: [],
       showSurveyInfoId: 0,
       showSurveyInfoIndex: 0
     }
   },
   components: {
     ZCard0001,
-    ZCard0002
+    ZCard0002,
+    ZCard0003
   },
   methods: {
     // Show Survey Page Info
@@ -93,6 +106,7 @@ export default {
         this.showSurveyInfoIndex = index
         this.$refs.surveyCard0001[this.showSurveyInfoIndex].checkDetail()
         this.getComment(id)
+        this.getChildren(id)
       }
     },
     // Show Survey List
@@ -110,6 +124,12 @@ export default {
         id: id
       })
       this.commentList = res.data
+    },
+    async getChildren (id) {
+      let {data: res} = await this.$http.post('/api/getChildren', {
+        id: id
+      })
+      this.chapterList = res.data
     }
   },
   mounted () {
@@ -128,6 +148,15 @@ export default {
 .comment-wrap{
   >div{
     margin-top: 0px;
+  }
+  >div:first-child{
+    margin-top: 20px;
+  }
+}
+
+.chapter-wrap{
+  >div{
+    margin-top: 10px;
   }
   >div:first-child{
     margin-top: 20px;

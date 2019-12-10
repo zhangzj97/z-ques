@@ -39,13 +39,43 @@ Mock.mock('/api/getComment', 'post', function (option) {
     message: 'Success',
     'data|3-5': [
       {
-        id: '@increment(33)',
+        id: '@increment(2)',
         content: '@cword(10, 30)',
         publish_time: '@datetime',
         author: {
           id: '@int(100-1000)',
           nickname: '@philosopher()',
-          avatar: '@dataImage(78x78)'
+          avatar: '@dataImage(100x100)'
+        }
+      }
+    ]
+  })
+})
+
+// get more children by survey_id
+Mock.mock('/api/getChildren', 'post', function (option) {
+  return Mock.mock({
+    status: 200,
+    message: 'Success',
+    'data|5-10': [
+      {
+        id: '@increment(1)',
+        pid: '@int(3)',
+        title: '@cword(5, 10)',
+        count: '@int(20, 30)',
+        avatar: '@dataImage(100x100)',
+        'children|3-5': [
+          {
+            id: '@increment(1)',
+            title: '@cword(5, 10)',
+            count: '@int(3, 10)',
+            user_count: {
+              finished: '@int(1,9)'
+            }
+          }
+        ],
+        user_count: {
+          finished: '@int(1,9)'
         }
       }
     ]
