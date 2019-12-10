@@ -83,8 +83,12 @@ export default {
       let maxHeight = !this.show
         ? this.boxHeight
         : 0
+      let paddingTop = !this.show ? 20 : 0
+      let opacity = !this.show ? 1 : 0
       Velocity(this.$refs.box, {
-        maxHeight
+        maxHeight,
+        paddingTop,
+        opacity
       }, {
         duration: 400,
         begin: () => {
@@ -115,14 +119,13 @@ export default {
 
 <style lang="less">
 @import '../../style/zzj.less';
-@import 'index.less';
 
 .z-card--0003{
   display: flex;
   flex-flow: column nowrap;
   .mian-css();
 
-  .card{
+  >.card{
     // [IMPORTANT]
     padding: 8px 8px 8px 8px;
     display: flex;
@@ -133,7 +136,7 @@ export default {
     // position: relative;
     .card();
 
-    .header{
+    >.header{
       width: 100%;
       display: flex;
       flex-flow: row nowrap;
@@ -141,7 +144,7 @@ export default {
       align-items: center;
       position: relative;
 
-      .process{
+      >.process{
         display: block;
         height: 46px;
         position: absolute;
@@ -152,12 +155,12 @@ export default {
         overflow: hidden;
         background-color: aquamarine;
 
-        img{
+        >img{
           opacity: .6;
         }
       }
 
-      .thumb{
+      >.thumb{
         width: 30px;
         min-width: 30px;
         height: 30px;
@@ -171,22 +174,22 @@ export default {
         }
       }
 
-      .text{
+      >.text{
         margin-left: 20px;
 
-        .title{
+        >.title{
           color: @title-color;
           font-size: @font-size-md;
         }
       }
 
-      .action{
+      >.action{
         display: flex;
         position: absolute;
         right: 10px;
         top: 40%;
 
-        .subtext{
+        >.subtext{
           color: @subtitle-color;
           font-size: @font-size-md;
           color: @gray-6;
@@ -196,11 +199,18 @@ export default {
         // }
       }
     }
-    .box{
+    >.box{
       display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: center;
       width: 100%;
-      // padding-top: 20px;
+      padding-top: 20px;
       overflow: hidden;
+
+      >div{
+        margin-top: 20px;
+      }
     }
   }
 }

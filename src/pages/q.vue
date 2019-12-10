@@ -20,6 +20,12 @@
         :key=v1.id
         :info=v1
       >
+        <z-card-0004
+          ref="surveyCard0004"
+          v-for="(v2) of v1.children"
+          :key=v2.id
+          :info=v2
+        ></z-card-0004>
       </z-card-0003>
     </div>
     <div class="comment-wrap">
@@ -38,6 +44,7 @@
 import ZCard0001 from '@/components/ZCard/0001/index'
 import ZCard0002 from '@/components/ZCard/0002/index'
 import ZCard0003 from '@/components/ZCard/0003/index'
+import ZCard0004 from '@/components/ZCard/0004/index'
 
 export default {
   data () {
@@ -94,7 +101,8 @@ export default {
   components: {
     ZCard0001,
     ZCard0002,
-    ZCard0003
+    ZCard0003,
+    ZCard0004
   },
   methods: {
     // Show Survey Page Info
