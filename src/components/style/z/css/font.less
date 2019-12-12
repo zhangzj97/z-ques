@@ -1,0 +1,25 @@
+@import 'palette.less';
+
+// Font
+// Size
+@font-size-base: 10px;
+@font-size--h1: 18px;
+@font-size--title: 14px;
+@font-size--value: 14px;
+@font-size--content: 14px;
+@font-size--desc: 12px;
+@font-size--time: 12px;
+
+// Color
+@font-color--h1: @grey-9;
+@font-color--title: @grey-9;
+@font-color--value: @grey-7;
+@font-color--content: @grey-9;
+@font-color--desc: @grey-7;
+@font-color--time: @grey-7;
+
+// Mixin
+.font-base (@font-size: @font-size--title, @font-color: @font-color--title) {
+  font-size: @font-size;
+  color: @font-color;
+}

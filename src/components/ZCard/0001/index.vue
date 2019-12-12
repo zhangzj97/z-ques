@@ -214,5 +214,6 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../style/var.less';
 @import 'index.less';
 </style>

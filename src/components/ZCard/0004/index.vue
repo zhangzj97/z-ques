@@ -51,6 +51,7 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../style/var.less';
 @import '../../style/zzj.less';
 
 .z-flex-base(@flex-direction: row,  @flex-wrap: nowrap, @justify-content: flex-start, @align-items: center){
@@ -72,7 +73,7 @@ export default {
   height: 100%;
 }
 
-.z-backgroud-base(@height: 100%, @border-radius: @border-radius-lg){
+.z-backgroud-base(@height: 100%, @border-radius: @border-radius--card){
   display: flex;
   position: absolute;
   height: @height;

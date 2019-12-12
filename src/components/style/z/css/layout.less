@@ -1,0 +1,40 @@
+// Wrap
+// Padding
+@wrap-padding-base: 4px;
+@wrap-padding-xs: @wrap-padding-base * 2;
+@wrap-padding-sm: @wrap-padding-base * 3;
+@wrap-padding-md: @wrap-padding-base * 4;
+@wrap-padding-lg: @wrap-padding-base * 6;
+@wrap-padding-xl: @wrap-padding-base * 8;
+
+// Margin
+@wrap-margin-base: 4px;
+@wrap-margin-xs: @wrap-margin-base * 2;
+@wrap-margin-sm: @wrap-margin-base * 3;
+@wrap-margin-md: @wrap-margin-base * 4;
+@wrap-margin-lg: @wrap-margin-base * 6;
+@wrap-margin-xl: @wrap-margin-base * 8;
+
+// Mixin
+.wrap-base (@wrap-margin: @wrap-margin-xs, @wrap-padding: @wrap-padding-xs) {
+  margin: @wrap-margin 0;
+  padding: 0 @wrap-padding;
+}
+
+// Flex
+// Mixin
+.flex-base (@flex-direction: row, @flex-wrap: nowrap, @justify-content: flex-start, @align-items: center) {
+  display: flex;
+  flex-flow: @flex-direction @flex-wrap;
+  justify-content: @justify-content;
+  align-items: @align-items;
+}
+
+.flex-center () {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+

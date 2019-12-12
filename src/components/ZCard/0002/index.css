@@ -1,7 +1,83 @@
+@import 'iconfont/iconfont.css';
+/**
+ * Normalize
+ */
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+a:focus,
+input:focus,
+button:focus,
+textarea:focus,
+[class*='z-']:focus {
+  outline: none;
+}
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+input,
+button,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+div.wrap-base,
+section.wrap-base {
+  margin: 8px 0;
+  padding: 0 8px;
+}
+div.wrap-base .full,
+section.wrap-base .full {
+  padding: 0 0;
+}
+div.wrap-base .row,
+section.wrap-base .row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+div.wrap-base .row > div:first-child,
+section.wrap-base .row > div:first-child {
+  margin-right: 0;
+}
+div.wrap-base .row > div,
+section.wrap-base .row > div {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+div.wrap-base .col,
+section.wrap-base .col {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+div.wrap-base .grid,
+section.wrap-base .grid {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+div.wrap-base > div,
+section.wrap-base > div {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
 .z-card--0002 {
   display: flex;
   flex-flow: row nowrap;
-  border-bottom: 1px solid #f7f8fa;
+  border-bottom: 1px solid #F5F5F5;
   width: 100%;
 }
 .z-card--0002 .card {

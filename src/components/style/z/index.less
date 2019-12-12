@@ -1,0 +1,75 @@
+@import 'css/normalize.less';
+@import 'css/palette.less';
+@import 'css/layout.less';
+@import 'css/font.less';
+
+@height--bar: 50px;
+@height--cell: 44px;
+@height--avatar: 24px;
+
+@height--button-xs: 20px;
+@height--button-sm: 22px;
+@height--button-md: 42px;
+@height--button-lg: 48px;
+
+@width--avatar: @height--avatar;
+
+@border-radius--card: 8px;
+@border-radius--max: 999px;
+
+// Card
+.card-base () {
+  border-radius: @border-radius--card;
+  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, .05), 0 2px 2px 0 rgba(0, 0, 0, .1), 0 3px 3px 0 rgba(0, 0, 0, .05)
+}
+
+// Background
+.backgroud-wrap () {
+  position: relative;
+}
+
+.backgroud-base (@border-radius: @border-radius--card) {
+  position: absolute;
+  border-radius: @border-radius;
+}
+
+// Avatar
+.avatar-base (@width: @height--avatar, @width: @height--avatar) {
+  width: @width;
+  height: @height;
+}
+
+div.wrap-base, section.wrap-base {
+  .wrap-base();
+  
+  & .full {
+    padding: 0 0;
+  }
+  
+  // mode:row need maigin-left & margin-right
+  & .row {
+    .flex-base(row);
+
+    & > div:first-child {
+      margin-right: 0;
+    }
+
+    & > div {
+      margin-left: @wrap-margin-xs;
+      margin-right: @wrap-margin-xs;
+    }
+  }
+
+  & .col {
+    .flex-base(column);
+  }
+
+  & .grid {
+    .flex-base(column, wrap);
+  }
+
+  & > div {
+    margin-top: @wrap-margin-xs;
+    margin-bottom: @wrap-margin-xs;
+  }
+}

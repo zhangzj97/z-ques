@@ -1,6 +1,16 @@
 <template>
   <div class="page">
-    <button @click="getComment()">getComment</button>
+    <div class="action-wrap">
+      <z-button-0001>下一题</z-button-0001>
+      <z-button-0001>收藏</z-button-0001>
+    </div>
+    <div class="ques-wrap">
+      <z-card-0005
+        v-for="(v1) of quesInfo.ques"
+        :key=v1.id
+        :info=v1
+      ></z-card-0005>
+    </div>
     <button @click="showSurveyInfoList()">showSurveyInfoList</button>
     <div class="survey-wrap">
       <z-card-0001
@@ -45,55 +55,16 @@ import ZCard0001 from '@/components/ZCard/0001/index'
 import ZCard0002 from '@/components/ZCard/0002/index'
 import ZCard0003 from '@/components/ZCard/0003/index'
 import ZCard0004 from '@/components/ZCard/0004/index'
+import ZCard0005 from '@/components/ZCard/0005/index'
+import ZButton0001 from '@/components/ZButton/0001/index'
 
 export default {
   data () {
     return {
-      surveyInfoList: [
-        {
-          id: 1,
-          title: '思修题库',
-          subtitle: '原版题库',
-          avatar: '/static/T思修.png'
-        }, {
-          id: 2,
-          title: '毛概选题库',
-          subtitle: '高亮关键词语，引导选项，快速过完题库。',
-          avatar: '/static/毛概.png'
-        }, {
-          id: 3,
-          title: '马原',
-          subtitle: '高亮关思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库键词语，引导选项，快速过完题库。',
-          avatar: '/static/T马原.png'
-        }, {
-          id: 4,
-          title: '史纲史纲史纲史纲史纲史纲史纲',
-          subtitle: '高亮关思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库键词语，引导选项，快速过完题库。',
-          avatar: '/static/史纲.png'
-        }, {
-          id: 11,
-          title: '思修题库',
-          subtitle: '原版题库',
-          avatar: '/static/T思修.png'
-        }, {
-          id: 22,
-          title: '毛概选题库',
-          subtitle: '高亮关键词语，引导选项，快速过完题库。',
-          avatar: '/static/毛概.png'
-        }, {
-          id: 33,
-          title: '马原',
-          subtitle: '高亮关思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库键词语，引导选项，快速过完题库。',
-          avatar: '/static/T马原.png'
-        }, {
-          id: 44,
-          title: '史纲史纲史纲史纲史纲史纲史纲',
-          subtitle: '高亮关思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库思修精选题库键词语，引导选项，快速过完题库。',
-          avatar: '/static/史纲.png'
-        }
-      ],
+      surveyInfoList: [],
       commentList: [],
       chapterList: [],
+      quesInfo: [],
       showSurveyInfoId: 0,
       showSurveyInfoIndex: 0
     }
@@ -102,7 +73,9 @@ export default {
     ZCard0001,
     ZCard0002,
     ZCard0003,
-    ZCard0004
+    ZCard0004,
+    ZCard0005,
+    ZButton0001
   },
   methods: {
     // Show Survey Page Info
@@ -138,9 +111,16 @@ export default {
         id: id
       })
       this.chapterList = res.data
+    },
+    async getQues (id) {
+      let {data: res} = await this.$http.post('/api/getQues', {
+        id: id
+      })
+      this.quesInfo = res.data
     }
   },
   mounted () {
+    this.getQues(1)
     this.getSurveyInfoList()
   }
 }
@@ -169,5 +149,8 @@ export default {
   >div:first-child{
     margin-top: 20px;
   }
+}
+.action-wrap{
+  display: flex;
 }
 </style>

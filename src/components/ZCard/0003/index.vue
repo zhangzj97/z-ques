@@ -118,6 +118,7 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../style/var.less';
 @import '../../style/zzj.less';
 
 .z-card--0003{

@@ -81,3 +81,27 @@ Mock.mock('/api/getChildren', 'post', function (option) {
     ]
   })
 })
+
+// get ques by survey_id
+Mock.mock('/api/getQues', 'post', function (option) {
+  return Mock.mock({
+    status: 200,
+    message: 'Success',
+    data: {
+      'ques|1-5': [
+        {
+          id: '@increment(1)',
+          title: '@cword(5, 10)',
+          'content|1-4': [
+            {
+              type: 'radio',
+              option: '@word(1)',
+              value: '@cword(5, 10)'
+            }
+          ]
+        }
+      ],
+      count: 10
+    }
+  })
+})
