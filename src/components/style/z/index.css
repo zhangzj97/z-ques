@@ -34,37 +34,37 @@ section.wrap-base {
   margin: 8px 0;
   padding: 0 8px;
 }
-div.wrap-base .full,
-section.wrap-base .full {
+div.wrap-base.full,
+section.wrap-base.full {
   padding: 0 0;
 }
-div.wrap-base .row,
-section.wrap-base .row {
+div.wrap-base.row,
+section.wrap-base.row {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
 }
-div.wrap-base .row > div:first-child,
-section.wrap-base .row > div:first-child {
+div.wrap-base.row > div:first-child,
+section.wrap-base.row > div:first-child {
   margin-right: 0;
 }
-div.wrap-base .row > div,
-section.wrap-base .row > div {
+div.wrap-base.row > div,
+section.wrap-base.row > div {
   margin-left: 8px;
   margin-right: 8px;
 }
-div.wrap-base .col,
-section.wrap-base .col {
+div.wrap-base.col,
+section.wrap-base.col {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
 }
-div.wrap-base .grid,
-section.wrap-base .grid {
+div.wrap-base.grid,
+section.wrap-base.grid {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
 }

@@ -3,6 +3,16 @@
 @import 'css/layout.less';
 @import 'css/font.less';
 
+// Theme Color
+@color--brand: @cyan-5;
+@color--second: @cyan-6;
+@color--third: @cyan-7;
+@color--primary: @cyan-4;
+@color--info: @lightblue-4;
+@color--warring: @amber-4;
+@color--danger: @red-4;
+@color--default: @grey-4;
+
 @height--bar: 50px;
 @height--cell: 44px;
 @height--avatar: 24px;
@@ -42,12 +52,12 @@
 div.wrap-base, section.wrap-base {
   .wrap-base();
   
-  & .full {
+  &.full {
     padding: 0 0;
   }
   
   // mode:row need maigin-left & margin-right
-  & .row {
+  &.row {
     .flex-base(row);
 
     & > div:first-child {
@@ -60,12 +70,12 @@ div.wrap-base, section.wrap-base {
     }
   }
 
-  & .col {
+  &.col {
     .flex-base(column);
   }
 
-  & .grid {
-    .flex-base(column, wrap);
+  &.grid {
+    .flex-base(row, wrap);
   }
 
   & > div {
