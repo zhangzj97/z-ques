@@ -1,0 +1,68 @@
+@import '../../components/style/zzj.less';
+
+div.demo--button,
+div.demo--layout{
+  margin: 0px;
+  padding: 0px;
+
+  section{
+
+    > div.wrap-base{
+      background-color: @color--default;
+
+      > .item{
+        width: 50px;
+        height: 50px;
+        background-color: @color--brand;
+        .flex-center();
+  
+        // &.item{
+  
+        //   &--1{
+        //     width: 100%;
+        //   }
+        //   &--2{
+        //     flex-basis: 100%;
+        //   }
+        //   &--3{
+        //     flex: 3;
+        //   }
+        //   &--4{
+        //     flex: 4;
+        //   }
+        // }
+      }
+    }
+
+    > .text{
+      padding: 8px;
+      margin: 8px;
+      font-size: 18px;
+      text-align: left;
+      border-radius: 8px;
+
+      &--default{
+        color: @black;
+        background-color: @grey-1;
+      }
+      &--primary{
+        color: @cyan-9;
+        background-color: @cyan-1;
+      }
+      &--info{
+        color: @lightblue-9;
+        background-color: @lightblue-1;
+      }
+      &--warring{
+        color: @amber-9;
+        background-color: @amber-1;
+      }
+      &--danger{
+        color: @red-9;
+        background-color: @red-1;
+      }
+    }
+
+
+  }
+}

@@ -7,20 +7,20 @@
 @color--brand: @cyan-5;
 @color--second: @cyan-6;
 @color--third: @cyan-7;
-@color--primary: @cyan-4;
-@color--info: @lightblue-4;
-@color--warring: @amber-4;
-@color--danger: @red-4;
-@color--default: @grey-4;
+@color--primary: @cyan-3;
+@color--info: @lightblue-3;
+@color--warring: @amber-3;
+@color--danger: @red-3;
+@color--default: @grey-3;
 
 @height--bar: 50px;
 @height--cell: 44px;
 @height--avatar: 24px;
 
 @height--button-xs: 20px;
-@height--button-sm: 22px;
+@height--button-sm: 32px;
 @height--button-md: 42px;
-@height--button-lg: 48px;
+@height--button-lg: 54px;
 
 @width--avatar: @height--avatar;
 
@@ -52,22 +52,18 @@
 div.wrap-base, section.wrap-base {
   .wrap-base();
   
+  // Solute the problem that children's margin will affect parent's.
+  &::before, &::after {
+    content:'';
+    display: flex;
+  }
+
   &.full {
     padding: 0 0;
   }
   
-  // mode:row need maigin-left & margin-right
   &.row {
     .flex-base(row);
-
-    & > div:first-child {
-      margin-right: 0;
-    }
-
-    & > div {
-      margin-left: @wrap-margin-xs;
-      margin-right: @wrap-margin-xs;
-    }
   }
 
   &.col {
@@ -77,8 +73,16 @@ div.wrap-base, section.wrap-base {
   &.grid {
     .flex-base(row, wrap);
   }
+}
+// User Defined
+div.wrap-base, section.wrap-base {
 
-  & > div {
+  &.row > div, &.grid > div,
+  &.row > a, &.grid > a {
+    margin-right: @wrap-margin-xs;
+  }
+  &.col > div, > div,
+  &.col > div, > div {
     margin-top: @wrap-margin-xs;
     margin-bottom: @wrap-margin-xs;
   }

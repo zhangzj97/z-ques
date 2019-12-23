@@ -2,10 +2,10 @@
   <div class="z-card--0005">
     <div class="card">
       <div class="header">
-        <div class="process">
+        <div class="process" :style="{width: processWidth}">
           <img src="" alt="">
         </div>
-        <div class="count">{{count.finished}} / {{count.all}}</div>
+        <div class="count">{{countFinished}} / {{countAll}}</div>
       </div>
       <div class="main">
         <div class="text">
@@ -17,12 +17,14 @@
         <label
           v-for="(v1) of info.content"
           :key="v1.id"
+          @click="chooseNext()"
         >
           <input type="radio" :name="`ques[${info.id}]`">
           <div class="option">{{ v1.option }}</div>
           <div class="value">{{ v1.value }}</div>
         </label>
       </div>
+      <slot name="default"></slot>
     </div>
   </div>
 </template>
@@ -47,14 +49,27 @@ export default {
         }
       }
     },
-    count: {
-      type: Object,
+    countAll: {
+      type: Number,
       default () {
-        return {
-          all: 10,
-          finished: 9
-        }
+        return 10
       }
+    },
+    countFinished: {
+      type: Number,
+      default () {
+        return 9
+      }
+    }
+  },
+  methods: {
+    chooseNext (id, index) {
+      this.$emit('chooseNext')
+    }
+  },
+  computed: {
+    processWidth: function () {
+      return `${this.countFinished / this.countAll * 100}%`
     }
   }
 }

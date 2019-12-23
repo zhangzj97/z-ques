@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 
 // get surveyInfo list in home
-Mock.mock('/api/getSurveyInfoList', 'get', {
+Mock.mock('/api/getSurveyList', 'get', {
   status: 200,
   message: 'Success',
   'data|5-8': [
@@ -33,7 +33,7 @@ Mock.mock('/api/getSurveyInfoList', 'get', {
 })
 
 // get comments by survey_id
-Mock.mock('/api/getComment', 'post', function (option) {
+Mock.mock('/api/getCommentList', 'post', function (option) {
   return Mock.mock({
     status: 200,
     message: 'Success',
@@ -53,7 +53,7 @@ Mock.mock('/api/getComment', 'post', function (option) {
 })
 
 // get more children by survey_id
-Mock.mock('/api/getChildren', 'post', function (option) {
+Mock.mock('/api/getChapterList', 'post', function (option) {
   return Mock.mock({
     status: 200,
     message: 'Success',
@@ -83,7 +83,7 @@ Mock.mock('/api/getChildren', 'post', function (option) {
 })
 
 // get ques by survey_id
-Mock.mock('/api/getQues', 'post', function (option) {
+Mock.mock('/api/getQuesList', 'post', function (option) {
   return Mock.mock({
     status: 200,
     message: 'Success',

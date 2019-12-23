@@ -1,6 +1,6 @@
 <template>
   <div class="button-wrap">
-    <button :class="[buttonClass]">
+    <button :class="[buttonClass]" :disabled=" disabled === true ? true : false">
       <div class="icon">
         <img src="" alt="">
       </div>
@@ -29,9 +29,13 @@ export default {
       type: String,
       default: () => 'md'
     },
+    radius: {
+      type: String,
+      default: () => ''
+    },
     shape: {
       type: String,
-      default: () => 'square'
+      default: () => ''
     },
     loading: {
       type: Boolean,
@@ -50,15 +54,13 @@ export default {
   computed: {
     // iconClass textClass
     buttonClass: function () {
-      let size = this.size.length > 0 ? this.size : 'md'
-      let type = this.type.length > 0 ? this.type : 'defalut'
-      let shape = this.shape.length > 0 ? this.shape : 'square'
-      let buttonSize = `button--${size}`
-      let buttonType = `button--${type}`
-      let buttonShape = `button--${shape}`
-      let buttonLoading = this.loading ? 'button--loading' : ''
-      let buttonDisabled = this.disabled ? 'button--disabled' : ''
-      return ['button', buttonSize, buttonType, buttonShape, buttonLoading, buttonDisabled]
+      let buttonSize = this.size.length > 0 ? `button--${this.size}` : 'button--md'
+      let buttonType = this.type.length > 0 ? `button--${this.type}` : 'button--default'
+      let buttonRadius = this.radius.length > 0 ? `button--${this.radius}` : ''
+      let buttonShape = this.shape.length > 0 ? `button--${this.shape}` : ''
+      let buttonLoading = this.loading === true ? `button--loading` : ''
+      let buttonDisabled = this.disabled === true ? `button--disabled` : ''
+      return ['button', buttonSize, buttonType, buttonRadius, buttonShape, buttonLoading, buttonDisabled]
     }
     // titleClass: function () {
 

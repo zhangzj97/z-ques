@@ -1,51 +1,104 @@
 @import '../../style/zzj.less';
 
-div.button-wrap{
+@padding--button-base: 4px;
+@padding--button-xs: 4px * 1;
+@padding--button-sm: 4px * 2;
+@padding--button-md: 4px * 3;
+@padding--button-lg: 4px * 4;
 
-  >button.button{
+div.button-wrap {
+
+  > button, > div {
     .flex-base();
-
+    
     &.button{
+      border: 0px;
+      border-radius: 0px;
+      overflow: hidden;
+      box-sizing: border-box;
+      transition-property: all;
+      transition-duration: .3s;
 
-      &--xs{
-        height: @height--button-xs;
-        border-top: solid transparent 1px;
+      // Size
+      .button-size (@padding: @padding--button-md, @height: @height--button-md) {
+        padding: 0 @padding;
+        height: @height;
       }
-      &--sm{
-        height: @height--button-sm;
-        border-top: solid transparent 1px;
+      &--xs {
+        .button-size(@padding--button-xs, @height--button-xs);
+
+        // Shape
+        &.button{
+          &--square, &--box, &--circle{
+            width: @height--button-xs;
+          }
+        }
       }
-      &--md{
-        height: @height--button-md;
-        border-top: solid transparent 1px;
+      &--sm {
+        .button-size(@padding--button-sm, @height--button-sm);
+        
+        // Shape
+        &.button{
+          &--square, &--box, &--circle{
+            width: @height--button-sm;
+          }
+        }
       }
-      &--lg{
-        height: @height--button-lg;
-        border-top: solid transparent 1px;
+      &--md {
+        .button-size(@padding--button-md, @height--button-md);
+
+        // Shape
+        &.button{
+          &--square, &--box, &--circle{
+            width: @height--button-md;
+          }
+        }
       }
-      &--default{
+      &--lg {
+        .button-size(@padding--button-lg, @height--button-lg);
+
+        // Shape
+        &.button{
+          &--square, &--box, &--circle{
+            width: @height--button-lg;
+          }
+        }
+      }
+
+      //Type
+      &--default {
         background-color: @color--default;
       }
-      &--primary{
+      &--primary {
         background-color: @color--primary;
       }
-      &--warring{
+      &--info {
+        background-color: @color--info;
+      }
+      &--warring {
         background-color: @color--warring;
       }
-      &--danger{
+      &--danger {
         background-color: @color--danger;
       }
-      &--disabled{
-        opacity: 6;
+
+      // State
+      &--disabled {
+        opacity: 0.6;
       }
-      &--loading{
-        opacity: 6;
+      &--loading {
+        opacity: 0.6;
       }
-      &--round{
-        border-radius: @border-radius--max;
-      }
-      &--square{
+
+      // Radius
+      &--square {
         border-radius: 0px;
+      }
+      &--round, &--box {
+        border-radius: 8px;
+      }
+      &--pill, &--circle {
+        border-radius: @border-radius--max;
       }
     }
 

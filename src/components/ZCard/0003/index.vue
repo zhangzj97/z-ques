@@ -1,7 +1,7 @@
 <template>
-  <div class="z-card--0003" ref="zcard0003" @click="switchBox()">
+  <div class="z-card--0003" ref="zcard0003">
     <div class="card">
-      <div class="header">
+      <div class="header" @click="switchBox()">
         <div
           class="process"
           :style="perFinished"

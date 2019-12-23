@@ -35,6 +35,13 @@ section.wrap-base {
   margin: 8px 0;
   padding: 0 8px;
 }
+div.wrap-base::before,
+section.wrap-base::before,
+div.wrap-base::after,
+section.wrap-base::after {
+  content: '';
+  display: flex;
+}
 div.wrap-base.full,
 section.wrap-base.full {
   padding: 0 0;
@@ -45,15 +52,6 @@ section.wrap-base.row {
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-}
-div.wrap-base.row > div:first-child,
-section.wrap-base.row > div:first-child {
-  margin-right: 0;
-}
-div.wrap-base.row > div,
-section.wrap-base.row > div {
-  margin-left: 8px;
-  margin-right: 8px;
 }
 div.wrap-base.col,
 section.wrap-base.col {
@@ -69,54 +67,136 @@ section.wrap-base.grid {
   justify-content: flex-start;
   align-items: center;
 }
+div.wrap-base.row > div,
+section.wrap-base.row > div,
+div.wrap-base.grid > div,
+section.wrap-base.grid > div,
+div.wrap-base.row > a,
+section.wrap-base.row > a,
+div.wrap-base.grid > a,
+section.wrap-base.grid > a {
+  margin-right: 8px;
+}
+div.wrap-base.col > div,
+section.wrap-base.col > div,
+div.wrap-base > div,
+section.wrap-base > div,
+div.wrap-base.col > div,
+section.wrap-base.col > div,
 div.wrap-base > div,
 section.wrap-base > div {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-div.button-wrap > button.button {
+div.button-wrap > button,
+div.button-wrap > div {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
 }
-div.button-wrap > button.button.button--xs {
-  height: 20px;
-  border-top: solid transparent 1px;
-}
-div.button-wrap > button.button.button--sm {
-  height: 22px;
-  border-top: solid transparent 1px;
-}
-div.button-wrap > button.button.button--md {
-  height: 42px;
-  border-top: solid transparent 1px;
-}
-div.button-wrap > button.button.button--lg {
-  height: 48px;
-  border-top: solid transparent 1px;
-}
-div.button-wrap > button.button.button--default {
-  background-color: #BDBDBD;
-}
-div.button-wrap > button.button.button--primary {
-  background-color: #26c6da;
-}
-div.button-wrap > button.button.button--warring {
-  background-color: #FFCA28;
-}
-div.button-wrap > button.button.button--danger {
-  background-color: #EF5350;
-}
-div.button-wrap > button.button.button--disabled {
-  opacity: 6;
-}
-div.button-wrap > button.button.button--loading {
-  opacity: 6;
-}
-div.button-wrap > button.button.button--round {
-  border-radius: 999px;
-}
-div.button-wrap > button.button.button--square {
+div.button-wrap > button.button,
+div.button-wrap > div.button {
+  border: 0px;
   border-radius: 0px;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+div.button-wrap > button.button--xs,
+div.button-wrap > div.button--xs {
+  padding: 0 4px;
+  height: 20px;
+}
+div.button-wrap > button.button--xs.button--square,
+div.button-wrap > div.button--xs.button--square,
+div.button-wrap > button.button--xs.button--box,
+div.button-wrap > div.button--xs.button--box,
+div.button-wrap > button.button--xs.button--circle,
+div.button-wrap > div.button--xs.button--circle {
+  width: 20px;
+}
+div.button-wrap > button.button--sm,
+div.button-wrap > div.button--sm {
+  padding: 0 8px;
+  height: 32px;
+}
+div.button-wrap > button.button--sm.button--square,
+div.button-wrap > div.button--sm.button--square,
+div.button-wrap > button.button--sm.button--box,
+div.button-wrap > div.button--sm.button--box,
+div.button-wrap > button.button--sm.button--circle,
+div.button-wrap > div.button--sm.button--circle {
+  width: 32px;
+}
+div.button-wrap > button.button--md,
+div.button-wrap > div.button--md {
+  padding: 0 12px;
+  height: 42px;
+}
+div.button-wrap > button.button--md.button--square,
+div.button-wrap > div.button--md.button--square,
+div.button-wrap > button.button--md.button--box,
+div.button-wrap > div.button--md.button--box,
+div.button-wrap > button.button--md.button--circle,
+div.button-wrap > div.button--md.button--circle {
+  width: 42px;
+}
+div.button-wrap > button.button--lg,
+div.button-wrap > div.button--lg {
+  padding: 0 16px;
+  height: 54px;
+}
+div.button-wrap > button.button--lg.button--square,
+div.button-wrap > div.button--lg.button--square,
+div.button-wrap > button.button--lg.button--box,
+div.button-wrap > div.button--lg.button--box,
+div.button-wrap > button.button--lg.button--circle,
+div.button-wrap > div.button--lg.button--circle {
+  width: 54px;
+}
+div.button-wrap > button.button--default,
+div.button-wrap > div.button--default {
+  background-color: #E0E0E0;
+}
+div.button-wrap > button.button--primary,
+div.button-wrap > div.button--primary {
+  background-color: #4dd0e1;
+}
+div.button-wrap > button.button--info,
+div.button-wrap > div.button--info {
+  background-color: #4FC3F7;
+}
+div.button-wrap > button.button--warring,
+div.button-wrap > div.button--warring {
+  background-color: #FFD54F;
+}
+div.button-wrap > button.button--danger,
+div.button-wrap > div.button--danger {
+  background-color: #E57373;
+}
+div.button-wrap > button.button--disabled,
+div.button-wrap > div.button--disabled {
+  opacity: 0.6;
+}
+div.button-wrap > button.button--loading,
+div.button-wrap > div.button--loading {
+  opacity: 0.6;
+}
+div.button-wrap > button.button--square,
+div.button-wrap > div.button--square {
+  border-radius: 0px;
+}
+div.button-wrap > button.button--round,
+div.button-wrap > div.button--round,
+div.button-wrap > button.button--box,
+div.button-wrap > div.button--box {
+  border-radius: 8px;
+}
+div.button-wrap > button.button--pill,
+div.button-wrap > div.button--pill,
+div.button-wrap > button.button--circle,
+div.button-wrap > div.button--circle {
+  border-radius: 999px;
 }

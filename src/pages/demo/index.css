@@ -1,3 +1,4 @@
+@import 'iconfont/iconfont.css';
 /**
  * Normalize
  */
@@ -86,4 +87,55 @@ div.wrap-base > div,
 section.wrap-base > div {
   margin-top: 8px;
   margin-bottom: 8px;
+}
+div.demo--button,
+div.demo--layout {
+  margin: 0px;
+  padding: 0px;
+}
+div.demo--button section > div.wrap-base,
+div.demo--layout section > div.wrap-base {
+  background-color: #BDBDBD;
+}
+div.demo--button section > div.wrap-base > .item,
+div.demo--layout section > div.wrap-base > .item {
+  width: 50px;
+  height: 50px;
+  background-color: #00bcd4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.demo--button section > .text,
+div.demo--layout section > .text {
+  padding: 8px;
+  margin: 8px;
+  font-size: 18px;
+  text-align: left;
+  border-radius: 8px;
+}
+div.demo--button section > .text--default,
+div.demo--layout section > .text--default {
+  color: #000000;
+  background-color: #F5F5F5;
+}
+div.demo--button section > .text--primary,
+div.demo--layout section > .text--primary {
+  color: #006064;
+  background-color: #b2ebf2;
+}
+div.demo--button section > .text--info,
+div.demo--layout section > .text--info {
+  color: #01579B;
+  background-color: #B3E5FC;
+}
+div.demo--button section > .text--warring,
+div.demo--layout section > .text--warring {
+  color: #FF6F00;
+  background-color: #FFECB3;
+}
+div.demo--button section > .text--danger,
+div.demo--layout section > .text--danger {
+  color: #B71C1C;
+  background-color: #FFCDD2;
 }
